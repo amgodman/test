@@ -6,12 +6,31 @@ function displayDate()
 {
 document.getElementById("demo").innerHTML=Date();
 }
+function getMousePos(canvas, evt)
+{
+  var c = canvas;
+  var top = 0;
+  var left = 0;
+  while(c && c.tagName != 'BODY')
+  {
+    top += c.offsetTop;
+    left += c.offsetLeft;
+    c = c.offsetParent;
+  }
+  var mouseX = evt.clientX - left + window.pageXOffset;
+  var mouseY = evt.clientY - top + window.pageYOffset;
+  return
+  {
+    x: mouseX,
+    y: mouseY
+  };
+}
 </script>
 </head>
 <body>
 
 <h1>Austin Godman</h1>
-<p id="demo">This is a paragraph.</p>
+<p id="demo">x: y: </p>
 
 <button type="button" onclick="displayDate()">Display Date</button>
 
